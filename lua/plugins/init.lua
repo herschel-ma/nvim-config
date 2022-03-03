@@ -99,13 +99,13 @@ return require("packer").startup(
     use {
       "theHamsta/nvim-dap-virtual-text",
       requires = {
-        "mfusscient/nvim"
+        "mfusscient/nvim-dap"
       }
     }
     use {
       "rcarriga/nvim-dap-ui",
       requires = {
-        "mfusscient/nvim"
+        "mfusscient/nvim-dap"
       }
     }
   end

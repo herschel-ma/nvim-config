@@ -35,6 +35,7 @@ vim.bo.autoindent = true
 vim.o.expandtab = true
 vim.bo.expandtab = true
 vim.o.mouse = "a"
+vim.o.smartindent = true
 
 -- try copilot
 vim.g.copilot_no_tab_map = true
