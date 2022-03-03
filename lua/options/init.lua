@@ -1,0 +1,42 @@
+vim.cmd("filetype plugin indent on")
+vim.o.shortmess = vim.o.shortmess .. "c"
+vim.o.hidden = true
+vim.o.whichwrap = "b,s,<,>,[,],h,l"
+vim.o.pumheight = 10
+vim.o.fileencoding = "utf-8"
+vim.o.cmdheight = 2
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.opt.termguicolors = true
+vim.o.conceallevel = 0
+vim.o.showmode = false
+vim.o.backup = false
+vim.o.writebackup = false
+vim.o.updatetime = 300
+vim.o.timeoutlen = 100
+vim.o.clipboard = "unnamedplus"
+vim.o.hlsearch = false
+vim.o.ignorecase = true
+vim.o.scrolloff = 3
+vim.o.sidescrolloff = 5
+vim.wo.wrap = true -- fold line
+vim.wo.number = true
+vim.o.cursorline = true
+vim.wo.signcolumn = "yes"
+vim.o.tabstop = 2
+vim.bo.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
+vim.bo.shiftwidth = 2
+vim.o.foldmethod = "indent" -- fold indent
+vim.wo.foldmethod = "indent"
+vim.o.autoindent = true
+vim.bo.autoindent = true
+vim.o.expandtab = true
+vim.bo.expandtab = true
+vim.o.mouse = "a"
+
+-- try copilot
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+vim.g.copilot_tab_fallback = ""
