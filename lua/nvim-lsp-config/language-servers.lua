@@ -36,7 +36,8 @@ local langservers = {
   "html",
   "cssls",
   "tsserver",
-  "ls_emmet",
+  -- "ls_emmet",
+  "emmet_ls",
   "gopls",
   "sumneko_lua",
   "volar", -- 特别注意需要在项目下安装typescript
@@ -94,7 +95,6 @@ for _, server in ipairs(langservers) do
   elseif server == "pyright" then
     require "lspconfig".pyright.setup {
       capabilities = capabilities,
-      on_attach = on_attach_callback,
       on_attach = function(client)
         client.server_capabilities.completionProvider = false
       end
@@ -104,6 +104,11 @@ for _, server in ipairs(langservers) do
       capabilities = capabilities,
       on_attach = on_attach_callback,
       cmd = {"/usr/bin/zeta-note"}
+    }
+  elseif server == "emmet_ls" then
+    require "lspconfig".emmet_ls.setup {
+      capabilities = capabilities,
+      filetypes = {"html", "css", "typescriptreact", "javascriptreact"}
     }
   else
     require "lspconfig"[server].setup {

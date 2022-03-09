@@ -67,11 +67,12 @@ require "nvim-tree".setup {
       -- list of mappings to set on the tree manually
       list = {}
     }
-  }
+  },
+  gitignore = 1,
+  quit_on_open = 0
 }
+
 -- 2021年 10月 16日 星期六 16:38:02 CST
-vim.g.nvim_tree_quit_on_open = 0
-vim.g.nvim_tree_gitignore = 1
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_special_files = {"README.md", "Makefile", "MAKEFILE"} -- List of filenames that gets highlighted with NvimTreeSpecialFile
 vim.g.nvim_tree_show_icons = {"git", "folders", "files", "folder_arrows"}
