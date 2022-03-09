@@ -108,5 +108,8 @@ return require("packer").startup(
         "mfusscient/nvim-dap"
       }
     }
+
+    -- change project dir
+    use "joacohoyos/directory"
   end
 )

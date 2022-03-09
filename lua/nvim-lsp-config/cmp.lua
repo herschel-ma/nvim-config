@@ -36,7 +36,7 @@ cmp.setup {
     end
   },
   mapping = {
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
@@ -73,7 +73,10 @@ cmp.setup {
     )
   },
   sources = {
-    {name = "nvim_lsp"},
+    {
+      name = "nvim_lsp",
+      keyword_length = 1
+    },
     -- For vsnip user.
     {name = "vsnip"},
     -- For luasnip user.
@@ -97,5 +100,19 @@ cmp.setup {
         end
       }
     )
+  },
+  matching = {
+    disallow_fuzzy_matching = false,
+    disallow_partial_matching = false
   }
 }
+
+cmp.setup.filetype(
+  {"markdown", "help"},
+  {
+    sources = {
+      {name = "path"},
+      {name = "buffer"}
+    }
+  }
+)
