@@ -110,6 +110,10 @@ return require("packer").startup(
     }
 
     -- change project dir
-    use "joacohoyos/directory"
+    use "joacohoyos/directory.nvim"
+    -- show func signature when typing.
+    use {
+      "ray-x/lsp_signature.nvim"
+    }
   end
 )

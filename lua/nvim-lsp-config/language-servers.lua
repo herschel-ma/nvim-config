@@ -11,7 +11,6 @@ require "lspconfig/configs".ls_emmet = {
     settings = {}
   }
 }
-
 -- lua
 local system_name
 if vim.fn.has("mac") == 1 then
@@ -119,7 +118,7 @@ for _, server in ipairs(langservers) do
 end
 
 -- gopls orded import function
-function goimports(timeout_ms)
+function Goimports(timeout_ms)
   local context = {only = {"source.organizeImports"}}
   vim.validate {context = {context, "t", true}}
 
@@ -153,7 +152,7 @@ function goimports(timeout_ms)
   end
 end
 -- Create autocmd
-vim.api.nvim_command("autocmd BufWritePre *.go lua goimports(1000)")
+vim.api.nvim_command("autocmd BufWritePre *.go lua Goimports(1000)")
 vim.api.nvim_command("autocmd BufWritePre *.py lua vim.lsp.buf.formatting()")
 
 --fold
@@ -162,4 +161,13 @@ function on_attach_callback(client, bufnr)
   -- require('diagnostic').on_attach()
   -- require('completion').on_attach()
   require("folding").on_attach()
+  require "lsp_signature".on_attach(
+    {
+      bind = true, -- This is mandatory, otherwise border config won't get registered.
+      handler_opts = {
+        border = "rounded"
+      }
+    },
+    bufnr
+  )
 end
