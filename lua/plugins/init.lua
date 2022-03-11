@@ -1,13 +1,13 @@
 return require("packer").startup(
   function()
     -- Packer can manage itself
-    use "wbthomason/packer.nvim"
+    use {"wbthomason/packer.nvim"}
     -- colorscheme
-    use "shaunsingh/nord.nvim"
+    use {"shaunsingh/nord.nvim"}
     -- use 'glepnir/zephyr-nvim'
-    use "folke/tokyonight.nvim"
-    use "tanvirtin/monokai.nvim"
-    use "EdenEast/nightfox.nvim"
+    use {"folke/tokyonight.nvim"}
+    use {"tanvirtin/monokai.nvim"}
+    use {"EdenEast/nightfox.nvim"}
 
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
     use {
@@ -23,9 +23,9 @@ return require("packer").startup(
         require "nvim-tree".setup {}
       end
     }
-    use "windwp/nvim-ts-autotag"
-    use "p00f/nvim-ts-rainbow"
-    use "windwp/nvim-autopairs"
+    use {"windwp/nvim-ts-autotag"}
+    use {"p00f/nvim-ts-rainbow"}
+    use {"windwp/nvim-autopairs"}
     use {
       "folke/which-key.nvim",
       config = function()
@@ -61,7 +61,7 @@ return require("packer").startup(
       end
     }
     -- underline cursor word
-    use "xiyaowong/nvim-cursorword"
+    use {"xiyaowong/nvim-cursorword"}
     -- markdown preview
     use {"ellisonleao/glow.nvim"}
     use {
@@ -80,13 +80,13 @@ return require("packer").startup(
         require "colorizer".setup()
       end
     }
-    use "mhartington/formatter.nvim"
+    use {"mhartington/formatter.nvim"}
     -- tippop ai completion startup
-    use "github/copilot.vim"
-    use "glepnir/dashboard-nvim"
-    use "lukas-reineke/indent-blankline.nvim"
-    use "ggandor/lightspeed.nvim"
-    use "xiyaowong/nvim-transparent"
+    use {"github/copilot.vim"}
+    use {"glepnir/dashboard-nvim"}
+    use {"lukas-reineke/indent-blankline.nvim"}
+    use {"ggandor/lightspeed.nvim"}
+    use {"xiyaowong/nvim-transparent"}
 
     -- toggle terminal
     use {"akinsho/toggleterm.nvim"}
@@ -110,10 +110,22 @@ return require("packer").startup(
     }
 
     -- change project dir
-    use "joacohoyos/directory.nvim"
+    use {"joacohoyos/directory.nvim"}
     -- show func signature when typing.
     use {
       "ray-x/lsp_signature.nvim"
+    }
+
+    -- tpope/vim-surround
+    use {"tpope/vim-surround"}
+    use {
+      "lewis6991/gitsigns.nvim",
+      requires = {
+        "nvim-lua/plenary.nvim"
+      },
+      config = function()
+        require("gitsigns").setup()
+      end
     }
   end
 )
