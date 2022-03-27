@@ -30,12 +30,12 @@ vim.o.shiftwidth = 2
 vim.bo.shiftwidth = 2
 vim.o.foldmethod = "indent" -- fold indent
 vim.wo.foldmethod = "indent"
-vim.o.autoindent = true
 vim.bo.autoindent = true
 vim.o.expandtab = true
 vim.bo.expandtab = true
 vim.o.mouse = "a"
-vim.o.smartindent = true
+vim.o.autoindent = false
+vim.o.smartindent = false
 
 -- try copilot
 vim.g.copilot_no_tab_map = true
