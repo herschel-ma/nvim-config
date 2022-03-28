@@ -33,170 +33,179 @@
 
 -- lualine onelight theme.
 local colors = {
-  blue   = '#0184bc',
-  green  = '#50a14f',
-  purple = '#a626a4',
-  red   = '#ca1243',
-  yellow = '#c18401',
-  fg     = '#090a0b',
-  bg     = '#fafafa',
-  gray100  = '#f0f0f1',
-  gray200  = '#e5e5e6',
-  gray300  = '#a0a1a7',
-  gray400 = '#696c77',
+  blue = "#0184bc",
+  green = "#50a14f",
+  purple = "#a626a4",
+  red = "#ca1243",
+  yellow = "#c18401",
+  fg = "#090a0b",
+  bg = "#fafafa",
+  magenta = "#c678dd",
+  gray100 = "#f0f0f1",
+  gray200 = "#e5e5e6",
+  gray300 = "#a0a1a7",
+  gray400 = "#696c77"
 }
 
 local onelight_theme = {
   normal = {
-    a = {fg = colors.bg, bg = colors.green, gui = 'bold'},
+    a = {fg = colors.bg, bg = colors.green, gui = "bold"},
     b = {fg = colors.fg, bg = colors.gray200},
     c = {fg = colors.fg, bg = colors.gray100}
   },
-  insert = {a = {fg = colors.bg, bg = colors.blue, gui = 'bold'}},
-  visual = {a = {fg = colors.bg, bg = colors.purple, gui = 'bold'}},
-  replace = {a = {fg = colors.bg, bg = colors.red, gui = 'bold'}},
+  insert = {a = {fg = colors.bg, bg = colors.blue, gui = "bold"}},
+  visual = {a = {fg = colors.bg, bg = colors.purple, gui = "bold"}},
+  replace = {a = {fg = colors.bg, bg = colors.red, gui = "bold"}},
   inactive = {
-    a = {fg = colors.gray400, bg = colors.gray100, gui = 'bold'},
+    a = {fg = colors.gray400, bg = colors.gray100, gui = "bold"},
     b = {fg = colors.gray400, bg = colors.gray100},
     c = {fg = colors.gray400, bg = colors.gray100}
   }
 }
 
 local light_muted = {
-  fg = colors.gray400,
-  bg = colors.gray100,
+  fg = "#fff",
+  bg = colors.gray400
 }
 local medium_muted = {
-  fg = colors.gray400,
-  bg = colors.gray200,
+  bg = colors.gree,
+  fg = colors.blue
 }
 
 -- Custom mode map with short names.
-local get_mode = require('lualine.utils.mode').get_mode
+local get_mode = require("lualine.utils.mode").get_mode
 local short_map = {
-  ['NORMAL'] = 'N',
-  ['INSERT'] = 'I',
-  ['VISUAL'] = 'V',
-  ['REPLACE'] = 'R',
+  ["NORMAL"] = "N",
+  ["INSERT"] = "I",
+  ["VISUAL"] = "V",
+  ["REPLACE"] = "R"
 }
 local function short_mode()
   local mode = get_mode()
-  if short_map[mode] == nil then return mode end
+  if short_map[mode] == nil then
+    return mode
+  end
   return short_map[mode]
 end
 
 -- Extension for fern file explorer.
 local fern_extension = {}
 local function fern_path()
-  return vim.fn.fnamemodify(vim.fn.getcwd(), ':~')
+  return vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
 end
 fern_extension.sections = {lualine_a = {fern_path}}
-fern_extension.filetypes = {'fern'}
+fern_extension.filetypes = {"fern"}
 
 local config = {
   options = {
     -- theme = onelight_theme,
-    theme = randfox,
-    section_separators = {'\u{E0B4}', '\u{E0B6}'},
+    section_separators = {"", ""},
+    component_separators = {"", ""}
     -- component_separators = {'\u{E0B5}', '\u{E0B7}'},
-    component_separators = {'', ''},
   },
-  extensions = {'fugitive', fern_extension},
+  extensions = {"fugitive", fern_extension},
   sections = {
     lualine_a = {short_mode},
     lualine_b = {
       {
-        'branch',
+        "branch",
         color = medium_muted,
-        icon = '\u{F126}',
+        icon = "\u{F126}"
       }
     },
     lualine_c = {
       {
-        'diff',
+        "diff",
         colored = true,
         color = light_muted,
-        separator = '\u{E0B7}',
+        separator = "\u{E0B7}"
       },
       {
-        'filename',
+        "filename",
         file_status = true,
-        path = 1,
-      },
+        path = 1
+      }
     },
-
     lualine_x = {
       {
-        'encoding',
-        color = light_muted,
+        "encoding",
+        color = light_muted
       },
       {
-        'fileformat',
-        color = light_muted,
+        "fileformat",
+        color = light_muted
       },
       {
-        'filetype',
-        color = light_muted,
+        "filetype",
+        color = light_muted
       }
     },
     lualine_y = {
       {
-        'progress',
-        color = medium_muted,
+        "progress",
+        color = medium_muted
       }
     }
   },
   inactive_sections = {
     lualine_c = {
-      {'filename', path = 1},
-    },
-  },
+      {"filename", path = 1}
+    }
+  }
 }
 local function ins_left(component)
   table.insert(config.sections.lualine_c, component)
 end
 local conditions = {
-  buffer_not_empty = function() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end,
+  buffer_not_empty = function()
+    return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
+  end
 }
 
 ins_left {
--- filesize component
+  -- filesize component
   function()
     local function format_file_size(file)
       local size = vim.fn.getfsize(file)
-      if size <= 0 then return '' end
-      local sufixes = {'b', 'k', 'm', 'g'}
+      if size <= 0 then
+        return ""
+      end
+      local sufixes = {"b", "k", "m", "g"}
       local i = 1
       while size > 1024 do
         size = size / 1024
         i = i + 1
       end
-      return string.format('%.1f%s', size, sufixes[i])
+      return string.format("%.1f%s", size, sufixes[i])
     end
-    local file = vim.fn.expand('%:p')
-    if string.len(file) == 0 then return '' end
+    local file = vim.fn.expand("%:p")
+    if string.len(file) == 0 then
+      return ""
+    end
     return format_file_size(file)
   end,
   condition = conditions.buffer_not_empty
 }
 
-ins_left {
-  -- current time
-  function ()
-    if vim.g.neovide_fullscreen then
-      local curTime = vim.fn.strftime("%c")
-      return curTime
-    end
-  end
-}
+-- ins_left {
+--   -- current time
+--   function()
+--     if vim.g.neovide_fullscreen then
+--       local curTime = vim.fn.strftime("%c")
+--       return curTime
+--     end
+--   end
+-- }
 
 ins_left {
   -- Lsp server name .
   function()
-    local msg = 'No Active Lsp'
-    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+    local msg = "No Active Lsp"
+    local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
     local clients = vim.lsp.get_active_clients()
-    if next(clients) == nil then return msg end
+    if next(clients) == nil then
+      return msg
+    end
     for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
@@ -205,12 +214,12 @@ ins_left {
     end
     return msg
   end,
-  icon = ' lsp:',
-  color = {fg = '#303030', gui = 'bold'}
+  icon = " lsp:",
+  color = {fg = colors.magenta, gui = "bold"}
 }
 
-require('lualine').setup(config)
---
+require("lualine").setup(config)
+-- time: 2022年 03月 28日 星期一 14:40:03 CST
 --
 -- -- Eviline config for lualine
 -- -- Author: shadmansaleh
