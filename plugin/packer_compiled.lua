@@ -11,7 +11,7 @@ local no_errors, error_msg = pcall(function()
 
   local time
   local profile_info
-  local should_profile = false
+  local should_profile = true
   if should_profile then
     local hrtime = vim.loop.hrtime
     profile_info = {}
@@ -95,6 +95,11 @@ _G.packer_plugins = {
     path = "/home/herschel/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/home/herschel/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
   ["cmp-tabnine"] = {
     loaded = true,
     path = "/home/herschel/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
@@ -130,6 +135,11 @@ _G.packer_plugins = {
     path = "/home/herschel/.local/share/nvim/site/pack/packer/start/formatter.nvim",
     url = "https://github.com/mhartington/formatter.nvim"
   },
+  ["friendly-snippets"] = {
+    loaded = true,
+    path = "/home/herschel/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
+  },
   ["gitsigns.nvim"] = {
     config = { "\27LJ\2\0026\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0" },
     loaded = true,
@@ -137,8 +147,10 @@ _G.packer_plugins = {
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["glow.nvim"] = {
-    loaded = true,
-    path = "/home/herschel/.local/share/nvim/site/pack/packer/start/glow.nvim",
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/herschel/.local/share/nvim/site/pack/packer/opt/glow.nvim",
     url = "https://github.com/ellisonleao/glow.nvim"
   },
   ["indent-blankline.nvim"] = {
@@ -198,8 +210,10 @@ _G.packer_plugins = {
     url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
   ["nvim-cursorword"] = {
-    loaded = true,
-    path = "/home/herschel/.local/share/nvim/site/pack/packer/start/nvim-cursorword",
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/herschel/.local/share/nvim/site/pack/packer/opt/nvim-cursorword",
     url = "https://github.com/xiyaowong/nvim-cursorword"
   },
   ["nvim-dap"] = {
@@ -216,11 +230,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/herschel/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
     url = "https://github.com/theHamsta/nvim-dap-virtual-text"
-  },
-  ["nvim-lsp-smag"] = {
-    loaded = true,
-    path = "/home/herschel/.local/share/nvim/site/pack/packer/start/nvim-lsp-smag",
-    url = "https://github.com/weilbith/nvim-lsp-smag"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -250,8 +259,10 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-ts-autotag"] = {
-    loaded = true,
-    path = "/home/herschel/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/herschel/.local/share/nvim/site/pack/packer/opt/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
   },
   ["nvim-ts-rainbow"] = {
@@ -304,10 +315,12 @@ _G.packer_plugins = {
     path = "/home/herschel/.local/share/nvim/site/pack/packer/start/vim-translator",
     url = "https://github.com/voldikss/vim-translator"
   },
-  ["vim-vsnip"] = {
-    loaded = true,
-    path = "/home/herschel/.local/share/nvim/site/pack/packer/start/vim-vsnip",
-    url = "https://github.com/hrsh7th/vim-vsnip"
+  ["vscode-jekyll-snippets"] = {
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/herschel/.local/share/nvim/site/pack/packer/opt/vscode-jekyll-snippets",
+    url = "https://github.com/edheltzel/vscode-jekyll-snippets"
   },
   ["which-key.nvim"] = {
     config = { "\27LJ\2\2;\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0" },
@@ -342,7 +355,21 @@ time([[Config for which-key.nvim]], false)
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\0026\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
 time([[Config for gitsigns.nvim]], false)
-if should_profile then save_profiles() end
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType javascriptreact ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "javascriptreact" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html ++once lua require("packer.load")({'vscode-jekyll-snippets', 'nvim-ts-autotag'}, { ft = "html" }, _G.packer_plugins)]]
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vscode-jekyll-snippets', 'glow.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascript ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "javascript" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+  -- Event lazy-loads
+time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'nvim-cursorword'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
+if should_profile then save_profiles(1) end
 
 end)
 
