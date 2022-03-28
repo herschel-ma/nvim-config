@@ -12,7 +12,8 @@ local mappings = {
     name = "Telescope",
     f = {"<cmd>Telescope find_files<CR>", "Find Files"},
     r = {"<cmd>Telescope live_grep<CR>", "Live Grep"},
-    l = {"<cmd>Telescope diagnostics<CR>", "List Diagnostics"} -- and then <C-q> will pushs problems to quickfix.
+    l = {"<cmd>Telescope diagnostics<CR>", "List Diagnostics"}, -- and then <C-q> will pushs problems to quickfix.
+    c = {"<cmd>Telescope change workspace<CR>", "Change Workspace"}
   },
   l = {
     name = "LSP",

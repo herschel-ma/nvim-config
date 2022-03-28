@@ -10,19 +10,47 @@ end
 -- Setup nvim-cmp.
 local cmp = require "cmp"
 -- lspkind
-local lspkind = require("lspkind")
-local source_mapping = {
+local lspkind = require "lspkind"
+local source_mapping = ({
   nvim_lsp = "[LSP]",
   buffer = "[Buffer]",
-  vsnip = "[vsnip]",
+  vsnip = "[VSnip]",
   luasnip = "[LuaSnip]",
   nvim_lua = "[Lua]",
   latex_symbols = "[Latex]",
   Path = "[Path]",
   cmp_tabnine = "[TN]"
-}
+})
 
+local kind_icons = {
+  Text = "",
+  Method = "",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "ﴯ",
+  Interface = "",
+  Module = "",
+  Property = "ﰠ",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = ""
+}
 cmp.setup {
+  view = {entries = "custom"},
   snippet = {
     expand = function(args)
       -- For `vsnip` user.
@@ -54,7 +82,7 @@ cmp.setup {
       function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
-        elseif vim.fn["vsnip#available"]() == 1 then
+        elseif vim.fn["vsnip#available"](1) == 1 then
           feedkey("<Plug>(vsnip-expand-or-jump)", "")
         elseif has_words_before() then
           cmp.complete()
@@ -87,18 +115,20 @@ cmp.setup {
 
     -- For ultisnips user.
     -- { name = 'ultisnips' },
-
+    {name = "nvim_lua"},
     {name = "buffer"},
     {name = "cmp_tabnine"}
   },
   formatting = {
     format = lspkind.cmp_format(
       {
-        mode = "symbol", -- show only symbol annotations
-        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+        mode = "symbol_text", -- show only symbol annotations
+        -- maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+        menu = source_mapping,
         -- The function below will be called before any actual modifications from lspkind
         -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
         before = function(_, vim_item)
+          vim_item.kind = kind_icons[vim_item.kind] or ""
           return vim_item
         end
       }

@@ -44,7 +44,7 @@ return require("packer").startup(
         "nvim-telescope/telescope.nvim",
         requires = {{"nvim-lua/plenary.nvim"}}
       }
-      -- language server protocol
+      use {"hrsh7th/vim-vsnip"}
       use {
         "hrsh7th/cmp-vsnip",
         requires = {
@@ -52,6 +52,7 @@ return require("packer").startup(
           {"edheltzel/vscode-jekyll-snippets", ft = {"markdown", "html"}} -- Jekyll Snippets
         }
       }
+      -- language server protocol
       use {"neovim/nvim-lspconfig"}
       use {
         "hrsh7th/nvim-cmp",
