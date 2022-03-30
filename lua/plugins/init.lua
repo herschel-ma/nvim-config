@@ -18,11 +18,13 @@ return require("packer").startup(
       use {"EdenEast/nightfox.nvim"}
 
       use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+      -- statusline and bufferline
       use {
-        "hoob3rt/lualine.nvim",
+        "tamton-aquib/staline.nvim",
         requires = {"kyazdani42/nvim-web-devicons", opt = true}
       }
-      use {"akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons"}
+      -- use {"akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons"}
+
       use {
         "kyazdani42/nvim-tree.lua",
         requires = {"kyazdani42/nvim-web-devicons", opt = true},
@@ -85,13 +87,6 @@ return require("packer").startup(
       use {"xiyaowong/nvim-cursorword", event = "VimEnter"}
       -- markdown preview
       use {"ellisonleao/glow.nvim", ft = "markdown"}
-      use {
-        "henriquehbr/nvim-startup.lua",
-        config = function()
-          require "nvim-startup".setup()
-        end
-      }
-      -- git
 
       -- cheat.sh
       use {"dbeniamine/cheat.sh-vim"}
@@ -147,6 +142,9 @@ return require("packer").startup(
         config = function()
           require("gitsigns").setup()
         end
+      }
+      use {
+        "rcarriga/nvim-notify"
       }
 
       if packer_bootstrap then

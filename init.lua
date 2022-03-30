@@ -1,8 +1,7 @@
 require("plugins")
 require("options")
 require("keybindings")
-require("lualine-config")
-require("bufferline-config")
+require("staline-config")
 require("nvim-treesitter-config")
 require("nvim-tree-config")
 require("nvim-autopairs-config")
@@ -19,6 +18,7 @@ require("nvim-dap-config")
 require("nvim-dap-virtual-text-config")
 require("nvim-dap-ui-config")
 require("nvim-directory-config")
+require("nvim-notify-config")
 -- colorscheme set
 -- vim.cmd('colorscheme nord')
 
