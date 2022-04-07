@@ -43,8 +43,9 @@ local langservers = {
   -- "pyright",
   -- "jedi_language_server",
   "pylsp",
-  "tailwindcss"
+  "tailwindcss",
   -- 'vuels',
+  "rust_analyzer"
 }
 
 for _, server in ipairs(langservers) do
@@ -109,6 +110,28 @@ for _, server in ipairs(langservers) do
       capabilities = capabilities,
       filetypes = {"html", "css", "typescriptreact", "javascriptreact"}
     }
+  elseif server == "rust_analyzer" then
+    --require("rust-tools").setup()
+    require "lspconfig".rust_tools.setup {
+      on_attach = function(client)
+        require "completion".on_attach(client)
+      end,
+      settings = {
+        ["rust-analyzer"] = {
+          assist = {
+            importGranularity = "module",
+            importPrefix = "self"
+          },
+          cargo = {
+            loadOutDirsFromCheck = true
+          },
+          procMacro = {
+            enable = true
+          }
+        }
+      }
+    }
+    require("rust-tools").setup({})
   else
     require "lspconfig"[server].setup {
       capabilities = capabilities,
@@ -171,6 +194,7 @@ end
 -- Create autocmd
 vim.api.nvim_command("autocmd BufWritePre *.go lua OrgImports(1000)")
 vim.api.nvim_command("autocmd BufWritePre *.py lua vim.lsp.buf.formatting()")
+vim.api.nvim_command("autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)")
 
 --fold
 function on_attach_callback(client, bufnr)

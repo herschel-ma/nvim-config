@@ -22,28 +22,28 @@ require("nvim-notify-config")
 -- colorscheme set
 -- vim.cmd('colorscheme nord')
 
--- vim.api.nvim_exec(
--- [[
--- function! s:AutoChangeColorStyle()
---     let hour = strftime("%H")
---     if 6 <= hour && hour < 18
---         let g:tokyonight_style = "day"
---     else
---         let g:tokyonight_style = "night"
---     endif
--- endfunction
--- call s:AutoChangeColorStyle()
--- ]],
--- false)
+vim.api.nvim_exec(
+  [[
+function! s:AutoChangeColorStyle()
+    let hour = strftime("%H")
+    if 6 <= hour && hour < 18
+        let g:tokyonight_style = "day"
+    else
+        let g:tokyonight_style = "night"
+    endif
+endfunction
+call s:AutoChangeColorStyle()
+]],
+  false
+)
 
--- local hour = tonumber(vim.fn.strftime("%H"))
--- if hour > 6 and hour < 18 then
---   vim.g.tokyonight_style = "day"
--- else
---   vim.g.tokyonight_style = "night"
--- end
-
-vim.g.tokyonight_style = "light"
+local hour = tonumber(vim.fn.strftime("%H"))
+if hour > 6 and hour < 18 then
+  vim.g.tokyonight_style = "day"
+else
+  vim.g.tokyonight_style = "night"
+end
+vim.g.tokyonight_style = "night"
 vim.g.tokyonight_italic_functions = true
 vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
 
@@ -54,13 +54,14 @@ require("monokai").setup {palette = require("monokai").soda}
 vim.cmd("colorscheme tokyonight")
 
 -- gui-neovide
-vim.o.guifont = "JetBrainsMono Nerd Font:h12"
-vim.g.neovide_transparency = 0.85
+-- vim.o.guifont = "JetBrainsMono Nerd Font:h12"
+vim.o.guifont = "GoMono Nerd Font Mono Bold :h12"
+vim.g.neovide_transparency = 1
 vim.g.neovide_cursor_animation_length = 0.13
 vim.g.neovide_cursor_trail_length = 0.8
 vim.g.neovide_cursor_vfx_mode = "railgun"
 vim.g.neovide_cursor_vfx_particle_speed = 13.0
-vim.g.neovide_fullscreen = false
+vim.g.neovide_fullscreen = true
 vim.g.neovide_remember_window_size = true
 
 -- temporary set python interceptor /usr/bin/python3

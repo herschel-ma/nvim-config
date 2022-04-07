@@ -41,6 +41,7 @@ require "stabline".setup {
   bg = "#986fec",
   fg = "#303030",
   stab_right = "",
+  stab_left = "",
   font_active = "bold",
   exclude_fts = {"NvimTree", "dashboard", "lir"},
   stab_start = "",

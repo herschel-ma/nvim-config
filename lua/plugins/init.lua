@@ -128,9 +128,7 @@ return require("packer").startup(
       -- change project dir
       use {"joacohoyos/directory.nvim"}
       -- show func signature when typing.
-      use {
-        "ray-x/lsp_signature.nvim"
-      }
+      use {"ray-x/lsp_signature.nvim"}
 
       -- tpope/vim-surround
       use {"tpope/vim-surround"}
@@ -143,10 +141,8 @@ return require("packer").startup(
           require("gitsigns").setup()
         end
       }
-      use {
-        "rcarriga/nvim-notify"
-      }
-
+      use {"rcarriga/nvim-notify"}
+      use {"simrat39/rust-tools.nvim"}
       if packer_bootstrap then
         require("packer").sync()
       end
