@@ -16,6 +16,12 @@ return require("packer").startup(
       use {"folke/tokyonight.nvim"}
       use {"tanvirtin/monokai.nvim"}
       use {"EdenEast/nightfox.nvim"}
+      use(
+        {
+          "catppuccin/nvim",
+          as = "catppuccin"
+        }
+      )
 
       use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
       -- statusline and bufferline

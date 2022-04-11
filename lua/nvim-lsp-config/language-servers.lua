@@ -112,7 +112,7 @@ for _, server in ipairs(langservers) do
     }
   elseif server == "rust_analyzer" then
     --require("rust-tools").setup()
-    require "lspconfig".rust_tools.setup {
+    require "lspconfig".rust_analyzer.setup {
       on_attach = function(client)
         require "completion".on_attach(client)
       end,
