@@ -75,6 +75,11 @@ _G.packer_plugins = {
     path = "/home/herschel/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
+  catppuccin = {
+    loaded = true,
+    path = "/home/herschel/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cheat.sh-vim"] = {
     loaded = true,
     path = "/home/herschel/.local/share/nvim/site/pack/packer/start/cheat.sh-vim",

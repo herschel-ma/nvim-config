@@ -20,6 +20,11 @@ require "nvim-tree".setup {
     -- allow to open the tree if it was previously closed
     auto_open = true
   },
+  renderer = {
+    indent_markers = {
+      enable = true
+    }
+  },
   -- hijack the cursor in the tree to put it at the start of the filename
   hijack_cursor = false,
   -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
@@ -73,8 +78,8 @@ require "nvim-tree".setup {
   quit_on_open = 0
 }
 
--- 2021年 10月 16日 星期六 16:38:02 CST
-vim.g.nvim_tree_indent_markers = 1
+-- 2022年 04月 18日 星期一 13:09:53 CST
+-- vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_special_files = {"README.md", "Makefile", "MAKEFILE"} -- List of filenames that gets highlighted with NvimTreeSpecialFile
 vim.g.nvim_tree_show_icons = {"git", "folders", "files", "folder_arrows"}
 vim.g.nvim_tree_icons = {

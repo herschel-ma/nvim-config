@@ -19,6 +19,7 @@ require("nvim-dap-virtual-text-config")
 require("nvim-dap-ui-config")
 require("nvim-directory-config")
 require("nvim-notify-config")
+require("nvim-colorscheme-config")
 -- colorscheme set
 -- vim.cmd('colorscheme nord')
 
@@ -37,26 +38,27 @@ call s:AutoChangeColorStyle()
   false
 )
 
-local hour = tonumber(vim.fn.strftime("%H"))
-if hour > 6 and hour < 18 then
-  vim.g.tokyonight_style = "day"
-else
-  vim.g.tokyonight_style = "night"
-end
+-- local hour = tonumber(vim.fn.strftime("%H"))
+-- if hour > 6 and hour < 18 then
+--   vim.g.tokyonight_style = "day"
+-- else
+--   vim.g.tokyonight_style = "night"
+-- end
 vim.g.tokyonight_style = "night"
 vim.g.tokyonight_italic_functions = true
 vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
 
 -- require("monokai").setup {}
 -- require("monokai").setup {palette = require("monokai").pro}
-require("monokai").setup {palette = require("monokai").soda}
+-- require("monokai").setup {palette = require("monokai").soda}
 --require("nightfox").load("randfox")
 vim.cmd("colorscheme tokyonight")
+-- vim.cmd("colorscheme catppuccin")
 
 -- gui-neovide
 -- vim.o.guifont = "JetBrainsMono Nerd Font:h12"
 vim.o.guifont = "GoMono Nerd Font Mono Bold :h12"
-vim.g.neovide_transparency = 1
+vim.g.neovide_transparency = 0.8
 vim.g.neovide_cursor_animation_length = 0.13
 vim.g.neovide_cursor_trail_length = 0.8
 vim.g.neovide_cursor_vfx_mode = "railgun"
