@@ -22,14 +22,19 @@ return require("packer").startup(
           as = "catppuccin"
         }
       )
+      use {"shaeinst/roshnivim-cs"}
+      use {"ishan9299/nvim-solarized-lua"}
+      use {"projekt0n/github-nvim-theme"}
 
       use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
       -- statusline and bufferline
       use {
-        "tamton-aquib/staline.nvim",
+        "nvim-lualine/lualine.nvim",
+        after = "github-nvim-theme",
         requires = {"kyazdani42/nvim-web-devicons", opt = true}
       }
-      -- use {"akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons"}
+      -- using packer.nvim
+      use {"akinsho/bufferline.nvim", tag = "*", requires = "kyazdani42/nvim-web-devicons"}
 
       use {
         "kyazdani42/nvim-tree.lua",

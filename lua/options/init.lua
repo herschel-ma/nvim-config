@@ -28,7 +28,7 @@ vim.bo.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 vim.bo.shiftwidth = 2
-vim.o.foldmethod = "indent" -- fold indent
+-- vim.o.foldmethod = "indent" -- fold indent
 vim.wo.foldmethod = "indent"
 vim.bo.autoindent = true
 vim.o.expandtab = true
@@ -59,8 +59,8 @@ function Pain()
   }
 
   local mode_color = {
-    n = colors.darkblue,
-    i = colors.green,
+    n = colors.cyan,
+    i = "#669960",
     v = colors.yellow,
     V = colors.blue,
     c = colors.magenta,
@@ -84,4 +84,4 @@ function Pain()
   vim.api.nvim_command("hi! CursorLine guifg=NONE guibg=" .. color)
 end
 
-vim.api.nvim_command([[autocmd ModeChanged * lua Pain()]])
+-- vim.api.nvim_command([[autocmd ModeChanged * lua Pain()]])
