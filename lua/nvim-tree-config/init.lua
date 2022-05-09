@@ -73,9 +73,7 @@ require "nvim-tree".setup {
       -- list of mappings to set on the tree manually
       list = {}
     }
-  },
-  gitignore = 1,
-  quit_on_open = 0
+  }
 }
 
 -- 2022年 04月 18日 星期一 13:09:53 CST

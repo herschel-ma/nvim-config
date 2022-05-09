@@ -45,7 +45,8 @@ local langservers = {
   "pylsp",
   "tailwindcss",
   -- 'vuels',
-  "rust_analyzer"
+  "rust_analyzer",
+  "sqls"
 }
 
 for _, server in ipairs(langservers) do
@@ -132,6 +133,27 @@ for _, server in ipairs(langservers) do
       }
     }
     require("rust-tools").setup({})
+  elseif server == "sqls" then
+    require "lspconfig".sqls.setup {
+      settings = {
+        sqls = {
+          connections = {
+            -- {
+            --   driver = "mysql",
+            --   dataSourceName = "root:root@tcp(127.0.0.1:3306)/blog"
+            -- },
+            -- {
+            --   driver = 'postgresql',
+            --   dataSourceName = 'host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable',
+            -- },
+            {
+              driver = "sqlite3",
+              dataSourceName = "/home/herschel/rustProjects/blog-actix/blog.db"
+            }
+          }
+        }
+      }
+    }
   else
     require "lspconfig"[server].setup {
       capabilities = capabilities,
