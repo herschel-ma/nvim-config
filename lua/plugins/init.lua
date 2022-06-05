@@ -153,6 +153,7 @@ return require("packer").startup(
         end
       }
       use {"rcarriga/nvim-notify"}
+      use {"fgheng/winbar.nvim"}
       use {"simrat39/rust-tools.nvim"}
       if packer_bootstrap then
         require("packer").sync()

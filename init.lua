@@ -21,6 +21,7 @@ require("nvim-notify-config")
 require("nvim-colorscheme-config")
 require("bufferline-config")
 require("lualine-config")
+require("winbar-config")
 -- colorscheme set
 vim.g.tokyonight_italic_functions = true
 vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
@@ -43,7 +44,8 @@ vim.g.solarized_statusline = "normal"
 -- Example config in Lua
 require("github-theme").setup(
   {
-    theme_style = "dimmed",
+    -- theme_style = "dimmed",
+    theme_style = "dark_default",
     comment_style = "italic",
     keyword_style = "italic",
     function_style = "italic",
@@ -64,14 +66,19 @@ require("github-theme").setup(
 )
 
 -- gui-neovide
--- vim.o.guifont = "GoMono Nerd Font Mono Bold :h12"
--- vim.g.neovide_transparency = 0.8
--- vim.g.neovide_cursor_animation_length = 0.13
--- vim.g.neovide_cursor_trail_length = 0.8
--- vim.g.neovide_cursor_vfx_mode = "railgun"
--- vim.g.neovide_cursor_vfx_particle_speed = 13.0
--- vim.g.neovide_fullscreen = true
--- vim.g.neovide_remember_window_size = true
+vim.o.guifont = "CaskaydiaCove Nerd Font Regular"
+vim.g.neovide_transparency = 0.8
+vim.g.neovide_cursor_animation_length = 0.13
+vim.g.neovide_cursor_trail_length = 0.8
+vim.g.neovide_cursor_vfx_mode = "railgun"
+vim.g.neovide_cursor_vfx_particle_speed = 13.0
+vim.g.neovide_fullscreen = true
+vim.g.neovide_remember_window_size = true
+
+-- gui-nvim-gtk
+if vim.fn.has("g:GtkGuiLoaded") then
+  vim.rpcnotify(1, "Gui", "Font", "CaskaydiaCove Nerd Font Regular 12")
+end
 
 -- temporary set python interceptor /usr/bin/python3
 vim.g.python_path = "/usr/bin/python3"

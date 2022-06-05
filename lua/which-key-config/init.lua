@@ -31,7 +31,7 @@ local mappings = {
     d = {"<cmd>lua vim.lsp.buf.definition()<CR>", "Go To Definition"},
     r = {"<cmd>lua vim.lsp.buf.references()<CR>", "Go To References"},
     k = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help"},
-    f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format"}
+    f = {"<cmd>lua vim.lsp.buf.format{async: true}<CR>", "Format"}
   },
   v = {":VsnipOpen<CR>", "Open Vsnip Config"}
 }

@@ -215,8 +215,8 @@ function OrgImports(wait_ms)
 end
 -- Create autocmd
 vim.api.nvim_command("autocmd BufWritePre *.go lua OrgImports(1000)")
-vim.api.nvim_command("autocmd BufWritePre *.py lua vim.lsp.buf.formatting()")
-vim.api.nvim_command("autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)")
+vim.api.nvim_command("autocmd BufWritePre *.py lua vim.lsp.buf.format()")
+vim.api.nvim_command("autocmd BufWritePre *.rs lua vim.lsp.buf.format(nil, 200)")
 
 --fold
 function on_attach_callback(client, bufnr)
