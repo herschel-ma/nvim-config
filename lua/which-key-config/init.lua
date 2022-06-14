@@ -23,17 +23,14 @@ local mappings = {
     R = {"<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove Workspace Folder"},
     l = {"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "List Workspace Folders"},
     D = {"<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type Definition"},
-    n = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Rename"},
-    a = {"<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action"},
-    -- a = {"<cmd>lua require('lspsaga.codeaction').code_action()<CR>", "Code Action"},
-    e = {"<cmd>lua vim.diagnostic.open_float()<CR>", "Show Line Diagnostics"},
+    n = {"<cmd>Lspsaga rename<cr>", "Rename"}, -- n = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Rename"},
+    a = {"<cmd>Lspsaga code_action<cr>", "Code Action"}, -- a = {"<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action"},
+    e = {"<cmd>Lspsaga show_line_diagnostics<cr>", "Show Line Diagnostics"}, -- e = {"<cmd>lua vim.diagnostic.open_float()<CR>", "Show Line Diagnostics"},
     q = {"<cmd>lua vim.diagnostic.set_loclist()<CR>", "Show Loclist"},
-    K = {"<cmd>lua vim.lsp.buf.hover()<CR>", "Hover"},
+    k = {"<cmd>Lspsaga hover_doc<cr>", "Hover Doc"}, -- k = {"<cmd>lua vim.lsp.buf.hover()<CR>", "Hover"}, K = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help"},
     d = {"<cmd>lua vim.lsp.buf.definition()<CR>", "Go To Definition"},
     r = {"<cmd>lua vim.lsp.buf.references()<CR>", "Go To References"},
-    k = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help"},
-    f = {"<cmd>lua vim.lsp.buf.format{async: true}<CR>", "Format"},
-    h = {"<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", "Finder Help (LSP Saga)"}
+    f = {"<cmd>lua vim.lsp.buf.format{async: true}<CR>", "Format"}
   },
   v = {":VsnipOpen<CR>", "Open Vsnip Config"}
 }
@@ -42,7 +39,9 @@ local opts = {prefix = "<leader>"}
 wk.register(mappings, opts)
 wk.register(
   {
-    ["<leader>l["] = {"<cmd>lua vim.diagnostic.goto_prev()<CR>", "Go To Previous Diagnostic"},
-    ["<leader>l]"] = {"<cmd>lua vim.diagnostic.goto_next()<CR>", "Go To Next Diagnostic"}
+    -- ["<leader>l["] = {"<cmd>lua vim.diagnostic.goto_prev()<CR>", "Go To Previous Diagnostic"},
+    ["<leader>l["] = {"<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go To Previous Diagnostic"},
+    -- ["<leader>l]"] = {"<cmd>lua vim.diagnostic.goto_next()<CR>", "Go To Next Diagnostic"}
+    ["<leader>l]"] = {"<cmd>Lspsaga diagnostic_jump_next<cr>", "Go To Next Diagnostic"}
   }
 )

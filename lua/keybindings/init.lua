@@ -28,6 +28,18 @@ map("i", "<C-k>", "<Up>", opts)
 -- makrdown preview
 map("v", "<F2>", ":Glow<CR>", opts)
 
+map(
+  "n",
+  "<C-u>",
+  "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1, '<c-u>')<cr>",
+  {noremap = true, silent = false}
+)
+map(
+  "n",
+  "<C-d>",
+  "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>",
+  {noremap = true, silent = false}
+)
 -- more lsp-config here: https://rishabhrd.github.io/jekyll/update/2020/09/19/nvim_lsp_config.html
 -- 2021年 10月 15日 星期五 17:00:59 CST
 -- herschel

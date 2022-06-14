@@ -79,7 +79,8 @@ return require("packer").startup(
           "hrsh7th/cmp-buffer"
         }
       }
-      use {"glepnir/lspsaga.nvim", git_branch = "main"}
+      -- use {"glepnir/lspsaga.nvim", git_branch = "main"}
+      use {"tami5/lspsaga.nvim"} -- nightly
 
       use {"onsails/lspkind-nvim", requires = "hrsh7th/nvim-cmp"}
       -- fold for lsp
