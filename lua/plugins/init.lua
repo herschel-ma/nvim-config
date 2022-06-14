@@ -25,24 +25,27 @@ return require("packer").startup(
       use {"shaeinst/roshnivim-cs"}
       use {"ishan9299/nvim-solarized-lua"}
       use {"projekt0n/github-nvim-theme"}
+      use {"ellisonleao/gruvbox.nvim"}
+      use(
+        {
+          "glepnir/zephyr-nvim",
+          requires = {"nvim-treesitter/nvim-treesitter", opt = true}
+        }
+      )
 
       use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
       -- statusline and bufferline
-      use {
-        "nvim-lualine/lualine.nvim",
-        after = "github-nvim-theme",
-        requires = {"kyazdani42/nvim-web-devicons", opt = true}
-      }
-      -- using packer.nvim
       use {"akinsho/bufferline.nvim", tag = "*", requires = "kyazdani42/nvim-web-devicons"}
+      -- glepnir/spaceline.vim
+      use {
+        "glepnir/spaceline.vim",
+        requires = "kyazdani42/nvim-web-devicons"
+      }
 
       use {
         "kyazdani42/nvim-tree.lua",
-        requires = {"kyazdani42/nvim-web-devicons", opt = true},
+        requires = {"kyazdani42/nvim-web-devicons", opt = true}
         -- after = 'kyazdani42/nvim-web-devicons',
-        config = function()
-          require "nvim-tree".setup {}
-        end
       }
       use {"windwp/nvim-ts-autotag", ft = {"html", "javascript", "javascriptreact"}}
       use {"p00f/nvim-ts-rainbow"}
@@ -76,6 +79,7 @@ return require("packer").startup(
           "hrsh7th/cmp-buffer"
         }
       }
+      use {"glepnir/lspsaga.nvim", git_branch = "main"}
 
       use {"onsails/lspkind-nvim", requires = "hrsh7th/nvim-cmp"}
       -- fold for lsp
@@ -95,7 +99,7 @@ return require("packer").startup(
         end
       }
       -- underline cursor word
-      use {"xiyaowong/nvim-cursorword", event = "VimEnter"}
+      -- use {"xiyaowong/nvim-cursorword", event = "VimEnter"}
       -- markdown preview
       use {"ellisonleao/glow.nvim", ft = "markdown"}
 

@@ -25,13 +25,15 @@ local mappings = {
     D = {"<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type Definition"},
     n = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Rename"},
     a = {"<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action"},
+    -- a = {"<cmd>lua require('lspsaga.codeaction').code_action()<CR>", "Code Action"},
     e = {"<cmd>lua vim.diagnostic.open_float()<CR>", "Show Line Diagnostics"},
     q = {"<cmd>lua vim.diagnostic.set_loclist()<CR>", "Show Loclist"},
     K = {"<cmd>lua vim.lsp.buf.hover()<CR>", "Hover"},
     d = {"<cmd>lua vim.lsp.buf.definition()<CR>", "Go To Definition"},
     r = {"<cmd>lua vim.lsp.buf.references()<CR>", "Go To References"},
     k = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help"},
-    f = {"<cmd>lua vim.lsp.buf.format{async: true}<CR>", "Format"}
+    f = {"<cmd>lua vim.lsp.buf.format{async: true}<CR>", "Format"},
+    h = {"<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", "Finder Help (LSP Saga)"}
   },
   v = {":VsnipOpen<CR>", "Open Vsnip Config"}
 }

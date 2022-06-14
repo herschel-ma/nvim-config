@@ -12,8 +12,8 @@ local cmp = require "cmp"
 -- lspkind
 local lspkind = require "lspkind"
 local source_mapping = ({
-  nvim_lsp = "[LSP]",
   buffer = "[Buffer]",
+  nvim_lsp = "[LSP]",
   vsnip = "[VSnip]",
   luasnip = "[LuaSnip]",
   nvim_lua = "[Lua]",
@@ -106,7 +106,7 @@ cmp.setup {
   sources = {
     {
       name = "nvim_lsp",
-      keyword_length = 1
+      keyword_length = 0
     },
     -- For vsnip user.
     {name = "vsnip"},
