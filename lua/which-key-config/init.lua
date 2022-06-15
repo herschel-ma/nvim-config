@@ -27,7 +27,9 @@ local mappings = {
     a = {"<cmd>Lspsaga code_action<cr>", "Code Action"}, -- a = {"<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action"},
     e = {"<cmd>Lspsaga show_line_diagnostics<cr>", "Show Line Diagnostics"}, -- e = {"<cmd>lua vim.diagnostic.open_float()<CR>", "Show Line Diagnostics"},
     q = {"<cmd>lua vim.diagnostic.set_loclist()<CR>", "Show Loclist"},
-    k = {"<cmd>Lspsaga hover_doc<cr>", "Hover Doc"}, -- k = {"<cmd>lua vim.lsp.buf.hover()<CR>", "Hover"}, K = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help"},
+    -- k = {"<cmd>Lspsaga hover_doc<cr>", "Hover Doc"},
+    k = {"<cmd>lua vim.lsp.buf.hover()<CR>", "Hover"},
+    K = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help"},
     d = {"<cmd>lua vim.lsp.buf.definition()<CR>", "Go To Definition"},
     r = {"<cmd>lua vim.lsp.buf.references()<CR>", "Go To References"},
     f = {"<cmd>lua vim.lsp.buf.format{async: true}<CR>", "Format"}

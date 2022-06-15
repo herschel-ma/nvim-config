@@ -22,6 +22,7 @@ vim.o.sidescrolloff = 5
 vim.wo.wrap = true -- fold line
 vim.wo.number = true
 vim.o.cursorline = true
+vim.o.cursorcolumn = true
 vim.wo.signcolumn = "yes"
 vim.o.tabstop = 2
 vim.bo.tabstop = 2
