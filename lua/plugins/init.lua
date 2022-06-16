@@ -70,6 +70,8 @@ return require("packer").startup(
       }
       -- language server protocol
       use {"neovim/nvim-lspconfig"}
+      use {"simrat39/rust-tools.nvim"}
+      use {"nvim-lua/lsp_extensions.nvim"}
       use {
         "hrsh7th/nvim-cmp",
         requires = {
@@ -79,7 +81,6 @@ return require("packer").startup(
           "hrsh7th/cmp-buffer"
         }
       }
-      -- use {"glepnir/lspsaga.nvim", git_branch = "main"}
       use {"tami5/lspsaga.nvim"} -- nightly
 
       use {"onsails/lspkind-nvim", requires = "hrsh7th/nvim-cmp"}
@@ -159,7 +160,6 @@ return require("packer").startup(
       }
       use {"rcarriga/nvim-notify"}
       use {"fgheng/winbar.nvim"}
-      use {"simrat39/rust-tools.nvim"}
       if packer_bootstrap then
         require("packer").sync()
       end
